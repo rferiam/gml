@@ -1,0 +1,47 @@
+{
+  "langs": [
+    ["spanish", "Español"],
+    ["english", "Ingles"],
+    ["french", "Frances"],
+    ["italian", "Italiano"],
+    ["german", "Alemán"]
+  ],
+  "types": [
+    {
+      "id": 1,
+      "text": "Universidades y otros"
+    },
+    {
+      "id": 2,
+      "text": "Universidades y otros (EUR)"
+    },
+    {
+      "id": 3,
+      "text": "Embajada con presupuesto"
+    },
+    {
+      "id": 4,
+      "text": "Embajada y otros sin presupuesto"
+    },
+    {
+      "id": 5,
+      "text": "Certificación bancos"
+    },
+    {
+      "id": 6,
+      "text": "Universidades y otros (CAD)"
+    },
+    {
+      "id": 7,
+      "text": "Universidades y otros (GBP)"
+    },
+    {
+      "id": 8,
+      "text": "Universidades y otros (AUD)"
+    },
+    {
+      "id": 9,
+      "text": "Practica profesional"
+    }
+  ]
+}

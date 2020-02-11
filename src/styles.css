@@ -1,0 +1,325 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --text-color-light: rgba(150, 150, 150, 255);
+  --text-color-dark: rgba(100, 100, 100, 255);
+  --primary-color: rgba(250, 0, 45, 255);
+  --gray-1: rgba(226, 226, 226, 255);
+  --gray-2: rgba(240, 240, 240, 255);
+  --gray-3: rgba(247, 247, 247, 255);
+  --logo: url("./assets/0.png");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+.radio {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.radio p {
+  margin-left: 100px;
+}
+
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkMark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.radio:hover input ~ .checkMark {
+  background-color: #ccc;
+}
+
+.radio input:checked ~ .checkMark {
+  background-color: var(--primary-color);
+}
+
+.checkMark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.radio input:checked ~ .checkMark:after {
+  display: block;
+}
+
+.radio .checkMark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+.table td,
+.table th {
+  border: 1px solid var(--gray-2);
+  padding: 8px;
+}
+
+.table tr:nth-child(even) {
+  background-color: var(--gray-2);
+}
+
+.table tr:hover {
+  background-color: var(--gray-3);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-auto-rows: 100px 1fr;
+  grid-template-areas:
+    "sideNav header"
+    "sideNav main";
+  min-height: (100vh - 130px);
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+}
+
+.header__left {
+  width: 40%;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  border-right: 2px solid var(--gray-1);
+}
+
+.header__name {
+  color: var(--primary-color);
+  font-weight: 400;
+  line-height: 1.2rem;
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+
+.header__cc {
+  color: var(--text-color-dark);
+  line-height: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.header__right {
+  width: 60%;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-left: 2px solid var(--gray-1);
+}
+
+.header__info {
+  padding: 0;
+  list-style-type: none;
+  color: var(--text-color-light);
+}
+
+.sideNav {
+  grid-area: sideNav;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 2;
+}
+
+.sideNav__brand {
+  box-sizing: border-box;
+  height: 100px;
+  background-image: var(--logo);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--primary-color);
+}
+
+.main__date-time,
+.sideNav__date-time {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  color: var(--text-color-dark);
+}
+
+.main__date-time {
+  padding-left: 15px;
+}
+
+.sideNav__date-time {
+  justify-content: center;
+}
+
+.main__date-time {
+  background-color: var(--gray-2);
+}
+
+.sideNav__date-time {
+  background-color: var(--gray-1);
+}
+
+.sideNav__menu {
+  background-color: var(--gray-3);
+  margin-top: 20px;
+}
+
+.sideNav__menu h4 {
+  margin: 2px 2px 2px 10px;
+  color: var(--text-color-dark);
+}
+
+.sideNav__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.sideNav__list-item {
+  padding: 3px 3px 3px 30px;
+  color: var(--text-color-light);
+}
+
+.sideNav__list-item:hover {
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
+
+.sideNav__list-ite,
+.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.main {
+  grid-area: main;
+}
+
+.main-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  height: 150px;
+  color: var(--text-color-light);
+}
+
+.main-body__intro-title {
+  margin: 0;
+  color: var(--text-color-dark);
+}
+
+.main-body__intro hr {
+  outline: var(--text-color-light);
+}
+
+.main-body__intro-paragraph {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.main-body h3 {
+  color: var(--primary-color);
+}
+
+.main-body__type {
+  margin-bottom: 60px;
+}
+
+.label {
+  display: block;
+  position: relative;
+  padding-bottom: 0;
+  margin: 12px 0 0 0;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.main-body__to-data .radio {
+  margin-right: 60px;
+}
+
+.main-body__destination input[type="text"],
+.main-body__to input[type="text"] {
+  width: 50%;
+  height: 1.5rem;
+}
+
+.table-btn {
+  margin: 0 auto;
+  font-size: 1rem;
+  color: lightskyblue;
+  text-decoration: underline;
+  cursor: auto;
+  border-style: none;
+  background: none;
+}
+
+.table-btn:hover {
+  color: #2a2ae4;
+  cursor: pointer;
+}
+
+.footer {
+  grid-area: footer;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: var(--gray-1);
+  color: var(--text-color-light-dark);
+  margin: 0;
+}

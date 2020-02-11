@@ -1,0 +1,181 @@
+<div class="grid-container">
+  <header class="header">
+    <div class="header__left">
+      <div>
+        <h3 class="header__name">Luis Fernando Abello Criales</h3>
+        <p class="header__cc">CC 1.140.869.190</p>
+      </div>
+    </div>
+    <div class="header__right">
+      <ul class="header__info">
+        <li>Maestría / Civil Engineering</li>
+        <li>Politécnico de Milano</li>
+        <li>Milano, Lombarda / Italia</li>
+        <li>COLFUTURO / PCB / 2017</li>
+      </ul>
+    </div>
+  </header>
+
+  <aside class="sideNav">
+    <div class="sideNav__brand"></div>
+    <div class="sideNav__date-time">
+      <p>
+        {{ dateTime }}
+      </p>
+    </div>
+    <div class="sideNav__menu">
+      <h4>Acciones</h4>
+      <ul class="sideNav__list">
+        <li class="sideNav__list-item">Inicio</li>
+        <li class="sideNav__list-item">Estatus</li>
+        <li class="sideNav__list-item">Presupuestos y giros</li>
+        <li class="sideNav__list-item active">Cartas de patrocinio</li>
+        <li class="sideNav__list-item">Certificado deuda</li>
+        <li class="sideNav__list-item">Interacciones</li>
+      </ul>
+      <h4>Mi información</h4>
+      <ul class="sideNav__list">
+        <li class="sideNav__list-item">Actualización de datos</li>
+        <li class="sideNav__list-item">Proyecto apoyado</li>
+        <li class="sideNav__list-item">Académica</li>
+        <li class="sideNav__list-item">Permanencia</li>
+        <li class="sideNav__list-item">Laboral</li>
+        <li class="sideNav__list-item">Co-deudores</li>
+        <li class="sideNav__list-item">Documentos</li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="main__date-time">
+      <p>
+        Mi estatus POE - Periodo Ordinario de Estudios del 01 sep 2017 al 31 jul
+        2019 / 23 meses
+      </p>
+    </div>
+
+    <div class="main-body">
+      <div class="main-body__intro">
+        <h2 class="main-body__intro-title">Cartas de patrocinio</h2>
+        <hr />
+        <p class="main-body__intro-paragraph">
+          Aca podrá generar sus cartas y certificados necesarios para cumplir
+          con los tramites asociados a su proyecto. Para generar el documento
+          seleccione el idioma, elija el tipo de documento y finalice pulsando
+          el link generar documento.
+        </p>
+      </div>
+
+      <div class="main-body__to">
+        <h3>&#191;A quien va dirigida&#63;</h3>
+        <label class="radio">
+          <p>A quien pueda interesar</p>
+          <input
+            type="radio"
+            (change)="setShowPersonDetailsForm(false)"
+            [(ngModel)]="showPersonDetailsForm"
+            name="showPersonDetailsForm"
+            [value]="false"
+          />
+          <span class="checkMark"></span>
+        </label>
+
+        <label class="radio">
+          <p>A esta persona...</p>
+          <input
+            type="radio"
+            (change)="setShowPersonDetailsForm(true)"
+            [(ngModel)]="showPersonDetailsForm"
+            name="showPersonDetailsForm"
+            [value]="true"
+          />
+          <span class="checkMark"></span>
+        </label>
+      </div>
+
+      <form [formGroup]="fg">
+        <div *ngIf="showPersonDetailsForm" class="main-body__to-data">
+          <label class="label">Titulo </label>
+          <label class="radio inline-block">
+            Senor
+            <input type="radio" formControlName="title" value="mr" />
+            <span class="checkMark"></span>
+          </label>
+          <label class="radio inline-block">
+            Senora
+            <input type="radio" formControlName="title" value="ms" />
+            <span class="checkMark"></span>
+          </label>
+          <label class="radio inline-block">
+            Senores
+            <input type="radio" formControlName="title" value="mrs" />
+            <span class="checkMark"></span>
+          </label>
+          <div>
+            <label class="label" for="firstName">Nombres</label>
+            <input type="text" id="firstName" formControlName="firstName" />
+          </div>
+          <div>
+            <label class="label" for="lastName">Apellidos</label>
+            <input type="text" id="lastName" formControlName="lastName" />
+          </div>
+          <div>
+            <label class="label" for="charge">Cargo</label>
+            <input type="text" id="charge" formControlName="charge" />
+          </div>
+        </div>
+        <div *ngIf="showPersonDetailsForm" class="main-body__destination">
+          <h3>&#191;A donde va dirigida&#63;</h3>
+          <label class="label" for="org">Organización</label>
+          <input type="text" id="org" formControlName="organization" />
+          <label class="label" for="address">Dirección</label>
+          <input type="text" id="address" formControlName="address" />
+          <label class="label" for="details"
+            >Detalles(Apt, Ofi, Bloq, etc)</label
+          >
+          <input type="text" id="details" formControlName="details" />
+          <label class="label" for="city">Ciudad</label>
+          <input type="text" id="city" formControlName="city" />
+          <label class="label" for="country">País</label>
+          <input type="text" id="country" formControlName="country" />
+        </div>
+        <div class="main-body__lang">
+          <h3>&#191;En que idioma&#63;</h3>
+          <label class="radio" *ngFor="let l of data.langs">
+            <p>{{ l[1] }}</p>
+            <input type="radio" formControlName="lang" [value]="l[0]" />
+            <span class="checkMark"></span>
+          </label>
+        </div>
+      </form>
+
+      <div class="main-body__type">
+        <h3>&#191;Cual carta&#63;</h3>
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let type of data.types">
+              <td>{{ type.text }}</td>
+              <td>
+                <button class="table-btn">
+                  Ver
+                </button>
+              </td>
+              <td>
+                <button class="table-btn" (click)="onSubmit(type.id)">
+                  Generar RTF
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__copyright">
+      COLFUTURO: Fundación para el futuro de Colombia
+    </div>
+    <div class="footer__signature">Carrera 15 No. 37-15 Bogota Colombia</div>
+  </footer>
+</div>
